@@ -11,7 +11,7 @@ namespace ToDoApp.Controllers
 	{
 		public ActionResult Index()
 		{
-			ViewBag.ToDoList = ToDoItem.CreateMockData();
+			ViewBag.ToDoList = new ToDoItem[] { };
 			return View();
 		}
 	}

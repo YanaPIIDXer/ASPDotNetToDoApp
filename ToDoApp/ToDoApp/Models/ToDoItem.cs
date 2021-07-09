@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Microsoft.EntityFrameworkCore;
 
 namespace ToDoApp.Models
 {
@@ -19,7 +20,7 @@ namespace ToDoApp.Models
 		/// タイトル
 		/// </summary>
 		public string Title { get; set; }
-		
+
 		/// <summary>
 		/// 本文
 		/// </summary>
@@ -29,51 +30,25 @@ namespace ToDoApp.Models
 		/// 日付
 		/// </summary>
 		public DateTime Date { get; set; }
+	}
+
+	/// <summary>
+	/// ToDoItemコンテキストクラス
+	/// </summary>
+	public class TodoContext : DbContext
+	{
+		/// <summary>
+		/// コンストラクタ
+		/// </summary>
+		/// <param name="options">コンテキストオプション</param>
+		public TodoContext(DbContextOptions<TodoContext> options)
+			: base(options)
+		{
+		}
 
 		/// <summary>
-		/// モックデータを作成
+		/// TODOリスト
 		/// </summary>
-		/// <returns>モックデータ配列</returns>
-		public static ToDoItem[] CreateMockData()
-		{
-			return new ToDoItem[]
-			{
-				new ToDoItem()
-				{
-					Id = 1,
-					Title = "Title1",
-					Body = "Body1",
-					Date = DateTime.Now
-				},
-				new ToDoItem()
-				{
-					Id = 2,
-					Title = "Title2",
-					Body = "Body2",
-					Date = DateTime.Now
-				},
-				new ToDoItem()
-				{
-					Id = 3,
-					Title = "Title3",
-					Body = "Body3",
-					Date = DateTime.Now
-				},
-				new ToDoItem()
-				{
-					Id = 4,
-					Title = "Title4",
-					Body = "Body4",
-					Date = DateTime.Now
-				},
-				new ToDoItem()
-				{
-					Id = 5,
-					Title = "Title5",
-					Body = "Body5",
-					Date = DateTime.Now
-				},
-			};
-		}
+		public DbSet<ToDoItem> ToDoList { get; set; }
 	}
 }
