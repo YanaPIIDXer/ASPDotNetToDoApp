@@ -48,7 +48,7 @@ namespace ToDoApp.Models
 				new ToDoItem()
 				{
 					Title = "Title3",
-					Body = "Body3\nBody3\nBody3",
+					Body = "Body3",
 					Date = DateTime.Now
 				},
 				new ToDoItem()

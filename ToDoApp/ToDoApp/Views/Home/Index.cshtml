@@ -1,6 +1,27 @@
 ﻿@{
-    ViewBag.Title = "トップ";
+	ViewBag.Title = "トップ";
 }
 
 <h1>TODOアプリ</h1>
 <hr />
+
+<h2>TODOリスト</h2>
+<table border="1">
+	<thead>
+		<tr>
+			<th>タイトル</th>
+			<th>本文</th>
+			<th>日付</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var todo in ViewBag.ToDoList)
+		{
+			<tr>
+				<td>@todo.Title</td>
+				<td>@todo.Body</td>
+				<td>@todo.Date</td>
+			</tr>
+		}
+	</tbody>
+</table>
