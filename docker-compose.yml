@@ -1,0 +1,13 @@
+version: "3.0"
+services:
+    db:
+        image: mysql:5.7
+        platform: linux/x86_64
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_USER: develop
+            MYSQL_PASSWORD: develop
+        ports:
+            - 3306:3306
+        volumes:
+            - ./mysql_data:/var/lib/mysql
