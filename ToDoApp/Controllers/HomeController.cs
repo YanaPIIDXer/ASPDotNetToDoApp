@@ -23,8 +23,7 @@ namespace ToDoApp.Controllers
 
 		public IActionResult Index()
 		{
-			ViewBag.ToDoList = context.ToDoList;
-			return View();
+			return View(context.ToDoList);
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
