@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using ToDoApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ToDoApp.Controllers
 {
@@ -35,6 +36,17 @@ namespace ToDoApp.Controllers
 				context.Add(info);
 				await context.SaveChangesAsync();
 			}
+			return RedirectToAction("Index");
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Delete(int id)
+		{
+			var info = await context.ToDoList.FindAsync(id);
+			context.ToDoList.Remove(info);
+			await context.SaveChangesAsync();
+
 			return RedirectToAction("Index");
 		}
 

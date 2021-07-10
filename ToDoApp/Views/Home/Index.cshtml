@@ -26,7 +26,12 @@
                 <td>@todo.Title</td>
                 <td>@todo.Body</td>
                 <td>@todo.Date</td>
-                <td><a href=@string.Format("ToDo/Delete/{0}", todo.Id)>削除</a></td>
+                <td>
+					<form asp-action="Delete">
+						<input type="hidden" name="id" value=@todo.Id />
+						<input type="submit" value="消去" />
+					</form>
+                </td>
             </tr>
 		}
     </tbody>
