@@ -15,6 +15,15 @@ namespace ToDoApp.Models
 	}
 
 	/// <summary>
+	/// 優先度
+	/// </summary>
+	public class Priority
+	{
+		public int Id { get; set; }
+		public string Name { get; set; }
+	}
+
+	/// <summary>
 	/// ToDoInfo コンテキストクラス
 	/// </summary>
 	public class ToDoContext : DbContext
@@ -25,5 +34,7 @@ namespace ToDoApp.Models
 		}
 
 		public DbSet<ToDoInfo> ToDoList { get; set; }
+
+		public DbSet<Priority> Priorities { get; set; }
 	}
 }
