@@ -26,6 +26,11 @@ namespace ToDoApp.Controllers
 			return View(context.ToDoList);
 		}
 
+		public IActionResult Create()
+		{
+			return Content("Create");
+		}
+
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
 		{
