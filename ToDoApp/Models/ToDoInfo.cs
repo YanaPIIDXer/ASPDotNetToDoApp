@@ -1,4 +1,5 @@
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace ToDoApp.Models
 {
@@ -11,5 +12,18 @@ namespace ToDoApp.Models
 		public string Title { get; set; }
 		public string Body { get; set; }
 		public DateTime Date { get; set; }
+	}
+
+	/// <summary>
+	/// ToDoInfo コンテキストクラス
+	/// </summary>
+	public class ToDoContext : DbContext
+	{
+		public ToDoContext(DbContextOptions<ToDoContext> options)
+			: base(options)
+		{
+		}
+
+		public DbSet<ToDoInfo> ToDoList { get; set; }
 	}
 }
