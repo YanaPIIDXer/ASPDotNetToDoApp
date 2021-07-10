@@ -26,9 +26,16 @@ namespace ToDoApp.Controllers
 			return View(context.ToDoList);
 		}
 
-		public IActionResult Create()
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Create([Bind("Id", "Title", "Body", "Date")] ToDoInfo info)
 		{
-			return Content("Create");
+			if (ModelState.IsValid)
+			{
+				context.Add(info);
+				await context.SaveChangesAsync();
+			}
+			return RedirectToAction("Index");
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
