@@ -29,7 +29,7 @@ namespace ToDoApp.Views.Home
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Body,Date")] ToDoInfo toDoInfo)
+        public async Task<IActionResult> Create([Bind("Id,Title,Body,Date,Priority")] ToDoInfo toDoInfo)
         {
             if (ModelState.IsValid)
             {

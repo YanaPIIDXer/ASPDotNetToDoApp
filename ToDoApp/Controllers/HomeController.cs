@@ -24,15 +24,21 @@ namespace ToDoApp.Controllers
 
 		public IActionResult Index()
 		{
-			return View(context.ToDoList);
+			var list = context.ToDoList.ToArray();
+			foreach(var todo in list)
+			{
+				context.Entry(todo).Reference(t => t.Priority).Load();
+			}
+			return View(list);
 		}
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Create([Bind("Id", "Title", "Body", "Date")] ToDoInfo info)
+		public async Task<IActionResult> Create([Bind("Id", "Title", "Body", "Date")] ToDoInfo info, int priority)
 		{
 			if (ModelState.IsValid)
 			{
+				info.Priority = await context.Priorities.FindAsync(priority);
 				context.Add(info);
 				await context.SaveChangesAsync();
 			}

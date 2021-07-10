@@ -9,6 +9,11 @@
 	<input type="text" placeholder="題名" name="Title" /><br />
 	<input type="text" placeholder="本文" name="Body" /><br />
     <input type="datetime-local" name="Date" /><br />
+    <select name="priority">
+        <option value="0">Low</option>
+        <option value="1">Middle</option>
+        <option value="2">High</option>
+    </select>
 	<input type="submit" value="追加" /><br />
 </form>
 <br />
@@ -16,7 +21,7 @@
 <table border="1">
     <thead>
         <tr>
-            <th>題名</th><th>本文</th><th>日付</th>
+            <th>題名</th><th>本文</th><th>日付</th><th>優先度</th>
         </tr>
     </thead>
     <tbody>
@@ -26,6 +31,7 @@
                 <td>@todo.Title</td>
                 <td>@todo.Body</td>
                 <td>@todo.Date</td>
+                <td>@todo.Priority.Name</td>
                 <td>
 					<form asp-action="Delete">
 						<input type="hidden" name="id" value=@todo.Id />

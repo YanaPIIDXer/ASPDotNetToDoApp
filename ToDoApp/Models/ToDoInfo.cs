@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 namespace ToDoApp.Models
@@ -12,6 +13,7 @@ namespace ToDoApp.Models
 		public string Title { get; set; }
 		public string Body { get; set; }
 		public DateTime Date { get; set; }
+		public Priority Priority { get; set; }
 	}
 
 	/// <summary>
