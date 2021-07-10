@@ -3,3 +3,21 @@
 }
 
 <h1>TODOアプリ</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>題名</th><th>本文</th><th>日付</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var todo in ViewBag.ToDoList)
+		{
+            <tr>
+                <td>@todo.Title</td>
+                <td>@todo.Body</td>
+                <td>@todo.Date</td>
+            </tr>
+		}
+    </tbody>
+</table>

@@ -25,8 +25,8 @@ namespace ToDoApp
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddDbContext<ToDoContext>(opt => opt.UseMySql(Configuration.GetConnectionString("ToDoContext"), MySqlServerVersion.LatestSupportedServerVersion));
 			services.AddControllersWithViews();
-			services.AddDbContext<ToDoContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ToDoContext")));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

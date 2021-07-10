@@ -11,15 +11,19 @@ namespace ToDoApp.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly ILogger<HomeController> _logger;
+		private readonly ILogger<HomeController> logger;
 
-		public HomeController(ILogger<HomeController> logger)
+		private readonly ToDoContext context;
+
+		public HomeController(ILogger<HomeController> logger, ToDoContext context)
 		{
-			_logger = logger;
+			this.logger = logger;
+			this.context = context;
 		}
 
 		public IActionResult Index()
 		{
+			ViewBag.ToDoList = context.ToDoList;
 			return View();
 		}
 
