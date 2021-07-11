@@ -22,12 +22,12 @@
         <option value="0">Low</option>
         <option value="1">Middle</option>
         <option value="2">High</option>
-    </select>
+    </select><br />
 	<input type="submit" value="追加" /><br />
 </form>
 <br />
 
-<table border="1">
+<table border="1" class="table table-bordered table-info">
     <thead>
         <tr>
             <th>題名</th><th>本文</th><th>日付</th><th>優先度</th>
@@ -44,7 +44,7 @@
                 <td>
 					<form asp-action="Delete">
 						<input type="hidden" name="id" value=@todo.Id />
-						<input type="submit" value="消去" />
+						<input type="submit" value="消去" class="btn btn-danger" />
 					</form>
                 </td>
             </tr>
