@@ -1,6 +1,15 @@
 ﻿@model IEnumerable<ToDoApp.Models.ToDoInfo>
 @{
-    ViewData["Title"] = "トップページ";
+	ViewData["Title"] = "トップページ";
+}
+
+@{
+	if (ViewData["Message"] != null)
+	{
+	    <div>
+		    <p>@ViewData["Message"]</p>
+	    </div>
+	}
 }
 
 <h1>TODOアプリ</h1>

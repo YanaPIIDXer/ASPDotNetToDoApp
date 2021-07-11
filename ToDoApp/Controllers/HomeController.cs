@@ -16,6 +16,9 @@ namespace ToDoApp.Controllers
 
 		private readonly ToDoContext context;
 
+		// HACK:他にやり方ないのか・・・？
+		private static string message = null;
+
 		public HomeController(ILogger<HomeController> logger, ToDoContext context)
 		{
 			this.logger = logger;
@@ -29,6 +32,8 @@ namespace ToDoApp.Controllers
 			{
 				context.Entry(todo).Reference(t => t.Priority).Load();
 			}
+			ViewData["Message"] = message;
+			message = null;
 			return View(list);
 		}
 
@@ -42,6 +47,8 @@ namespace ToDoApp.Controllers
 				context.Add(info);
 				await context.SaveChangesAsync();
 			}
+
+			message = info.Title + "を追加しました。";
 			return RedirectToAction("Index");
 		}
 
@@ -53,6 +60,7 @@ namespace ToDoApp.Controllers
 			context.ToDoList.Remove(info);
 			await context.SaveChangesAsync();
 
+			message = info.Title + "を削除しました。";
 			return RedirectToAction("Index");
 		}
 
